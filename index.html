@@ -324,8 +324,8 @@
                             <i class="fas fa-car"></i>
                         </div>
                         <div class="work-overlay">
-                            <h3 class="work-title">MACHINING COMPONENTS</h3>
-                            <p class="work-description">Precision machining of high-quality components using advanced CNC technology.</p>
+                            <h3 class="work-title">HEAVY DUTY INDUSTRIAL PLATFORM FABRICATION</h3>
+                            <p class="work-description">specialized in heavy-duty industrial platform fabrication for pipe manufacturing plants.</p>
                         </div>
                     </div>
                 </div>
@@ -523,13 +523,6 @@
     </section>
 
 
-
-
-
-
-
-
-
     <!-- pagination -->
     <section id="gallery" class="py-5">
     <div class="container">
@@ -674,92 +667,6 @@
 
     </div>
 </section>
-
-
-    <!-- Gallery Section -->
-<!-- <section id="gallery" class="gallery-section py-5">
-    <div class="container">
-        <div class="section-title text-center mb-5">
-            <span class="subtitle">Our Work</span>
-            <h2 class="title">Project Gallery</h2>
-            <p class="description">
-                A showcase of our fabrication, machining, and industrial installation projects.
-            </p>
-        </div>
-
-        <div class="row g-4">
-
-            <!-- Gallery Item 1 -->
-            <!-- <div class="col-md-4">
-                <div class="gallery-item">
-                    <img src="styles/images/pic1.jpg" alt="Gallery Image" class="img-fluid rounded shadow">
-                    <div class="gallery-overlay">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
-                </div>
-            </div> -->
-
-            <!-- Gallery Item 2 -->
-            <!-- <div class="col-md-4">
-                <div class="gallery-item">
-                    <img src="assets/img/gallery2.jpg" alt="Gallery Image" class="img-fluid rounded shadow">
-                    <div class="gallery-overlay">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
-                </div>
-            </div> -->
-
-            <!-- Gallery Item 3 -->
-            <!-- <div class="col-md-4">
-                <div class="gallery-item">
-                    <img src="assets/img/gallery3.jpg" alt="Gallery Image" class="img-fluid rounded shadow">
-                    <div class="gallery-overlay">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
-                </div>
-            </div> -->
-
-            <!-- Gallery Item 4 -->
-            <!-- <div class="col-md-4">
-                <div class="gallery-item">
-                    <img src="assets/img/gallery4.jpg" alt="Gallery Image" class="img-fluid rounded shadow">
-                    <div class="gallery-overlay">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
-                </div>
-            </div> -->
-
-            <!-- Gallery Item 5 -->
-            <!-- <div class="col-md-4">
-                <div class="gallery-item">
-                    <img src="assets/img/gallery5.jpg" alt="Gallery Image" class="img-fluid rounded shadow">
-                    <div class="gallery-overlay">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
-                </div>
-            </div> -->
-
-            <!-- Gallery Item 6 -->
-            <!-- <div class="col-md-4">
-                <div class="gallery-item">
-                    <img src="assets/img/gallery6.jpg" alt="Gallery Image" class="img-fluid rounded shadow">
-                    <div class="gallery-overlay">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section> --> -->
-
-
-
-
-
-
-
-
 
 
     <!-- Units Section -->
@@ -1001,7 +908,7 @@ const perPage = 3;
 let currentPage = 2;
 const totalPages = Math.ceil(cards.length / perPage);
 
-function showPage(page) {
+function showPage(page, shouldScroll = false) {
     // Show/hide cards for current page
     cards.forEach((card, i) => {
         card.style.display = (i >= (page - 1) * perPage && i < page * perPage) ? 'block' : 'none';
@@ -1031,13 +938,15 @@ function showPage(page) {
     document.getElementById('pagination').innerHTML = html;
 
     // Smooth scroll to top of gallery
-    document.getElementById('gallery').scrollIntoView({ behavior: 'smooth' });
+    if (shouldScroll) {
+    const gallery = document.getElementById('gallery');
+    window.scrollTo({ top: gallery.offsetTop - 70, behavior: 'smooth' });
 }
 
 function goToPage(page) {
     if (page < 1 || page > totalPages) return;
     currentPage = page;
-    showPage(page);
+    showPage(page, true);
 }
 
 // Start on page 1
